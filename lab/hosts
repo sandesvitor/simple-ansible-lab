@@ -1,0 +1,12 @@
+[control]
+ubuntu-master
+
+[webservers]
+ubuntu-server
+
+[database]
+ubuntu-database
+
+[webstack:children]
+webservers
+database

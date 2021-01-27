@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Friend!</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;1,100&display=swap');
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: navy;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .box{
+            background-color: dodgerblue;
+            border-radius: 15px;
+            padding: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>{{ html_welcome_msg }}</h1>
+        <h2>This is Ansible for begginers</h2>
+        <h3>Next off, Kubernetes!</h3>
+    </div>
+</body>
+</html>
