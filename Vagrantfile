@@ -1,12 +1,6 @@
 Vagrant.configure("2") do |config|
   servers=[
     {
-      :hostname => "ubuntu-master",
-      :box => "bento/ubuntu-18.04",
-      :ip => "192.168.55.100",
-      :ssh_port => '2220'
-    },
-    {
       :hostname => "ubuntu-server",
       :box => "bento/ubuntu-18.04",
       :ip => "192.168.55.101",
@@ -17,6 +11,12 @@ Vagrant.configure("2") do |config|
       :box => "bento/ubuntu-18.04",
       :ip => "192.168.55.102",
       :ssh_port => '2222'
+    },
+    {
+      :hostname => "ubuntu-master",
+      :box => "bento/ubuntu-18.04",
+      :ip => "192.168.55.100",
+      :ssh_port => '2220'
     }
   ]
 
@@ -33,9 +33,16 @@ Vagrant.configure("2") do |config|
         v.customize ["modifyvm", :id, "--memory", 512]
         v.customize ["modifyvm", :id, "--name", machine[:hostname]]
       end
-    end
+         
+      if node.vm.hostname == "ubuntu-master"
+        node.trigger.after :up do |trigger|
+          trigger.name = "Init Script"
+          trigger.info = "Running after vagrant up!"
+          trigger.run_remote = {inline: '/vagrant/lab/scripts/first_steps.sh', privileged: false}
+        end
+      end
 
-    config.vm.provision :shell, path: "lab/scripts/first_steps.sh"
+    end
   end
 
 end
