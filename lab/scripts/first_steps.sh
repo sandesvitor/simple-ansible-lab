@@ -2,6 +2,15 @@
 
 export DEBIAN_FRONTEND=noninteractive
 
+# Patch sudo to version 1.9.5p2 to avoid CVE-2021-3156 exploit
+cd /tmp
+wget "https://www.sudo.ws/dist/sudo-1.9.5p2.tar.gz"
+tar xvzf sudo-1.9.5p2.tar.gz 
+cd sudo-1.9.5p2/  
+./configure
+make && sudo make install 
+
+
 sudo cp /vagrant/lab/host_file /etc/hosts
 sudo apt-get update && sudo apt-get -y install ansible sshpass
 
