@@ -33,7 +33,13 @@ Vagrant.configure("2") do |config|
         v.customize ["modifyvm", :id, "--memory", 512]
         v.customize ["modifyvm", :id, "--name", machine[:hostname]]
       end
-         
+      
+      node.trigger.after :up do |trigger|
+        trigger.name = "Sudo Patch Script"
+          trigger.info = "Running after vagrant up!"
+          trigger.run_remote = {inline: '/vagrant/lab/scripts/patch_sudo.sh', privileged: false}
+      end
+      
       if node.vm.hostname == "ubuntu-master"
         node.trigger.after :up do |trigger|
           trigger.name = "Init Script"

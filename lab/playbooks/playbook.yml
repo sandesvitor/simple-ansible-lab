@@ -3,7 +3,6 @@
   vars:
     http_port: 8000
     https_port: 4443
-    html_welcome_msg: "Hello World"
   tasks:
 
     - name: ensure apache is at the latest version
