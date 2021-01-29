@@ -30,7 +30,7 @@ Vagrant.configure("2") do |config|
       node.vm.network "forwarded_port", guest: 22, host: machine[:ssh_port], id: "ssh"
 
       node.vm.provider :virtualbox do |v|
-        v.customize ["modifyvm", :id, "--memory", 512]
+        v.customize ["modifyvm", :id, "--memory", 512,"--cpus", 1]
         v.customize ["modifyvm", :id, "--name", machine[:hostname]]
       end
 
