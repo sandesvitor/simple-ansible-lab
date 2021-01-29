@@ -3,7 +3,7 @@
 export DEBIAN_FRONTEND=noninteractive
 
 sudo cp /vagrant/lab/host_file /etc/hosts
-sudo apt-get update && sudo apt-get -y install ansible sshpass
+sudo apt-get update && sudo apt-get -y install ansible sshpass tree
 
 ssh-keygen -q -t rsa -N '' -f /home/vagrant/.ssh/id_rsa <<<y 2>&1 >/dev/null
 sshpass -p "vagrant" ssh-copy-id -f -i /home/vagrant/.ssh/id_rsa.pub -o StrictHostKeyChecking=no ubuntu-master

@@ -1,0 +1,36 @@
+- name: Install nodejs
+  apt:
+    name: nodejs
+    state: present
+
+- name: Install npm
+  apt:
+    name: npm
+    state: present
+
+- name: create api working directory
+  file: path=/home/vagrant/app state=directory
+
+- name: write index.js to guest
+  template:
+    src: templates/index.js
+    dest: /home/vagrant/app
+
+- name: write package.json to guest
+  template:
+    src: templates/package.json
+    dest: /home/vagrant/app
+
+- name: running npm install
+  npm: path=/home/vagrant/app
+
+- name: install PM2 
+  become: yes 
+  npm: name=pm2 global=yes 
+  tags: pm2
+
+- name: start app
+  command: pm2 start /home/vagrant/app/index.js
+  ignore_errors: yes
+  become: yes
+  tags: pm2
