@@ -29,6 +29,12 @@
   npm: name=pm2 global=yes 
   tags: pm2
 
+- name: Stop APP
+  command: pm2 stop /home/vagrant/app/index.js
+  become: yes
+  ignore_errors: yes
+  tags: pm2
+
 - name: start app
   command: pm2 start /home/vagrant/app/index.js
   ignore_errors: yes

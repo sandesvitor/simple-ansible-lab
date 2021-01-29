@@ -1,6 +1,0 @@
-ubuntu-master | SUCCESS | rc=0 >>
-10.0.2.15 192.168.55.100 
-ubuntu-server | SUCCESS | rc=0 >>
-10.0.2.15 192.168.55.101 
-ubuntu-database | SUCCESS | rc=0 >>
-10.0.2.15 192.168.55.102 

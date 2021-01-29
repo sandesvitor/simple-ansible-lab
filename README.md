@@ -56,7 +56,7 @@ ubuntu-master | SUCCESS | rc=0 >>
 
 This indicates that the **first_steps.sh** script ran without any major problems.
 
-Now, the last step is to run the playbook.yml utilizing our ./lab/hosts inventory, with the following command:
+Now, the last step is to run the playbook.yml utilizing our ./lab/hosts inventory, with the following command, passing the default SUDO password "vagrant":
 
 ```shell
 [$] ansible-playbook -i /vagrant/lab/hosts -K /vagrant/lab/playbook.yml

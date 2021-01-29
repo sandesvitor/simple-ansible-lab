@@ -220,7 +220,7 @@
         const tableBody = document.querySelector('tbody')
 
         const renderRow = () => {
-            fetch("http://localhost:5000", {
+            fetch("http://192.168.55.101:5000", {
                 method: "GET",
                 mode: 'cors'
             })
@@ -270,7 +270,7 @@
 
             console.log(formState)
 
-            fetch("http://localhost:5000", {
+            fetch("http://192.168.55.101:5000", {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
